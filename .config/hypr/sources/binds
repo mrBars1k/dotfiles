@@ -17,14 +17,14 @@ bind = $mainMod, backslash, exec, deepin-calculator
 bind = $mainMod, slash, exec, pkill waybar; waybar
 
 ## Screen translator;
-bind = $mainMod, Z,  exec, grim -g "$(slurp)" - | tesseract - - > /home/mrbars1k/pytrans/tt.txt
+#bind = $mainMod, Z,  exec, grim -g "$(slurp)" - | tesseract - - > /home/mrbars1k/pytrans/tt.txt
 
 ## Eyes saver mode;
 bind = $mainMod, x, exec, /home/mrbars1k/.config/hypr/sources/save_eyes.sh
 
 ## Choose from clipboard;
 #bind = $mainMod, V, exec, cliphist list | wofi --dmenu -I -G | cliphist decode | wl-copy
-bind = $mainMod, V, exec, /home/mrbars1k/.config/hypr/sources/wofi-choose-clipvault.sh
+bind = $mainMod, V, exec, /home/mrbars1k/.config/hypr/sources/wofi-choose-cliphist.sh
 
 ## Clear clipboard (NumPad -);
 bind = $mainMod, KP_SUBTRACT, exec, clipvault clear & cliphist wipe
