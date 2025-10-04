@@ -1,0 +1,15 @@
+# ---------------------------- Variables --------------------------------- #
+
+$mainMod = SUPER
+$browser = firefox
+$terminal = kitty
+$fileManager = thunar
+$telegram = AyuGram
+
+
+# ------------------------------------------------------------------------ #
+
+$screenshots_folder = /home/mrbars1k/mnt/khaine/screenshots
+
+
+# ------------------------------------------------------------------------ #

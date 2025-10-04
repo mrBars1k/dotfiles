@@ -1,0 +1,22 @@
+env = EDITOR,nano
+
+env = XCURSOR_SIZE,24
+env = HYPRCURSOR_SIZE,24
+
+env = QT_QPA_PLATFORMTHEME,qt6ct
+env = QT_STYLE_OVERRIDE=Fusion
+
+env = XDG_DEFAULT_FILE_MANAGER,thunar
+
+env = XDG_CURRENT_DESKTOP,Hyprland
+env = XDG_SESSION_DESKTOP,Hyprland
+env = XDG_SESSION_TYPE,wayland
+
+env = LIBVA_DRIVER_NAME,nvidia
+env = GLX_VENDOR_LIBRARY_NAME,nvidia
+env = GBM_BACKEND,nvidia-drm
+env = ELECTRON_OZONE_PLATFORM_HINT,auto
+env = GL_VRR_ALLOWED,0
+env = WLR_NO_HARDWARE_CURSORS=1
+
+env = VISUAL,nano

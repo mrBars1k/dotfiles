@@ -1,0 +1,178 @@
+// -*- mode: jsonc -*-
+{
+    "output": [
+      "DP-1",
+      "DP-2",
+      "HDMI-A-1",
+    ],
+
+    // "layer": "top",
+    "position": "top",
+    "height": 24,
+    "spacing": 0,
+    "margin-bottom": 0,
+    "margin-top": 0,
+    
+    "modules-left": [
+        "hyprland/workspaces",
+        "tray",
+        "custom/weather"
+    ],
+
+    "modules-center": [
+        "hyprland/window"
+    ],
+
+    "modules-right": [
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "temperature",
+        "custom/gpu_temp",
+        "custom/gpu_vram",
+        "hyprland/language",
+        "clock",
+        "custom/swaync"
+    ],
+
+    // Modules configuration
+    // "hyprland/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "warp-on-scroll": false,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+    // },
+
+    "hyprland/workspaces": {
+        "format": "{name}: {icon}",
+        "all-outputs": false, // Раздельно для каждого монитора;
+	      
+        "format-icons": {
+            "1": "󰈹",
+            "2": "",
+            "4": "󰓓",
+            "6": "󰭻",
+            "10": "",
+            "urgent": "",
+            // "active": "",
+            "default": ""
+        }
+    },
+
+    "hyprland/language": {
+        "format": "{}",
+        "format-en": "<b>EN</b>",
+        "format-ru": "<b>RU</b>"
+    },
+
+    "hyprland/window": {
+        "format": "{class} | {title}",
+        "max-length": 50,
+        "separate-outputs": true
+    },
+
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10
+    },
+
+    "clock": {
+        "interval": 1,
+        "timezone": "Europe/Kiev",
+        "format": "<b>{:%H:%M | %d.%m.%Y}</b>",
+        "format-alt": "<b>{:%H:%M:%S | %d.%m.%Y}</b>",
+        "tooltip-format": "<big>{:%A}</big>",
+        "on-click": "~/.config/waybar/calendar.sh",
+    },
+
+    "cpu": {
+        "interval": 1,
+        "format": "{usage}% ",
+        "tooltip": false
+    },
+
+    "memory": {
+        "interval": 1,
+        "format": "{percentage}% 󰆼",
+        "format-alt": "{used:0.1f}/{total:0.1f} GiB"
+    },
+
+    "temperature": {
+        "interval": 1,
+        "format": "{temperatureC} {icon}",
+        "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
+        "critical-threshold": 70,
+        "format-critical": "{temperatureC} {icon}",
+        "format-icons": [""]
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+
+        "format": "{volume} {icon}  |{format_source}",
+        "format-muted": "󰖁  {format_source}",
+
+        "format-source": "{volume} ",
+        "format-source-muted": "",
+
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+
+	   "on-click": "~/.config/waybar/audio_settings.sh",
+	   "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+	
+    },
+
+    "custom/swaync": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+    
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+
+    "custom/gpu_temp": {
+        "format": "{}  ",
+        "exec": "~/.config/waybar/gpu_temp.sh",
+        "interval": 1
+    },
+
+    "custom/gpu_vram": {
+        "exec": "~/.config/waybar/gpu_vram.sh",
+        "interval": 1,
+        "format": "{}  "
+    },
+
+    "custom/weather": {
+        "exec": "~/.config/waybar/weather.sh",
+        "interval": 600,
+        "format": {},
+        "on-click": "xdg-open 'https://meteofor.com.ua/ru/weather-kharkiv-5053/month/'"
+    }
+
+} // End //

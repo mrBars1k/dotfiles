@@ -1,0 +1,155 @@
+# ------------------------------------------------------------------------ #
+
+# Ignore maximize requests from apps. You'll probably like this.
+windowrulev2 = suppressevent maximize, class:.*
+
+# Fix some dragging issues with XWayland
+windowrulev2 = nofocus, class:^$, title:^$, xwayland:1, floating:1, fullscreen:0, pinned:0
+
+
+# ------------------------------------------------------------------------ #
+#  Common:
+
+windowrulev2 = noborder, floating:1, xwayland:1
+windowrulev2 = noanim, xwayland:1
+windowrulev2 = noanim, floating:1
+windowrulev2 = opacity 1, floating:1
+
+windowrulev2 = opacity 0.980, workspace: -98 #  Special workspace;
+
+windowrulev2 = noborder, class:^(obsidian)$
+
+windowrulev2 = float, class:^(deepin-calculator)$
+windowrulev2 = move 75% 25%, class:^(deepin-calculator)$
+
+
+# ------------------------------------------------------------------------ #
+
+$steam = steam|Steam
+
+windowrulev2 = float, class:^($steam)$ #  Any window except described below;
+
+windowrulev2 = tile, class:^($steam)$, title:^(Steam)$
+
+windowrulev2 = noanim, class:^($steam)$
+windowrulev2 = workspace: 4 silent, class:^($steam)$
+
+windowrulev2 = float, class:^($steam)$, title:^(Friends List|Список друзей)$
+windowrulev2 = size 400 900, class:^($steam)$, title:^(Friends List|Список друзей)$
+windowrulev2 = move 1300 100, class:^($steam)$, title:^(Friends List|Список друзей)$
+
+windowrulev2 = float, class:^($steam)$, title:^(Steam Settings|Настройки)$
+windowrulev2 = size 1200 900, class:^($steam)$, title:^(Steam Settings|Настройки)$
+windowrulev2 = center, class:^($steam)$, title:^(Steam Settings|Настройки)$
+
+windowrulev2 = center, class:^($steam)$, title:.*(Browser|браузер)$
+windowrulev2 = size 90% 90%, class:^($steam)$, title:.*(Browser|браузер)$
+
+
+# ------------------------------------------------------------------------ #
+
+## Swappy - edit image (for screenshot) ##
+
+windowrulev2 = opacity 1, class:^(swappy)$, title:^(swappy)$
+windowrulev2 = noanim, class:^(swappy)$, title:^(swappy)$
+windowrulev2 = float, class:^(swappy)$, title:^(swappy)$
+windowrulev2 = center, class:^(swappy)$, title:^(swappy)$
+
+
+# ------------------------------------------------------------------------ #
+
+$haruna = org.kde.haruna|haruna|Haruna
+
+windowrulev2 = float, class:^(smplayer)$, initialTitle:^(SMPlayer)$
+windowrulev2 = center, class:^(smplayer)$, initialTitle:^(SMPlayer)$
+windowrulev2 = size 1200 800, class:^(smplayer)$, initialTitle:^(SMPlayer)$
+
+windowrulev2 = noanim, class:^($haruna|haruna)$
+windowrulev2 = float, class:^($haruna|haruna)$
+windowrulev2 = size 1200 800, class:^($haruna)$
+windowrulev2 = center, class:^($haruna|haruna)$
+windowrulev2 = move 500 180, class:^($haruna|haruna)$, title:^(Select subtitles file)$
+
+# ------------------------------------------------------------------------ #
+
+$gsimplecal = gsimplecal
+
+windowrulev2 = float, class:^($gsimplecal)$, title:^($gsimplecal)$
+windowrulev2 = size 100 200, class:^($gsimplecal)$, title:^($gsimplecal)$
+windowrulev2 = move 1720 55, class:^($gsimplecal)$, title:^($gsimplecal)$
+windowrulev2 = pin, class:^($gsimplecal)$, title:^($gsimplecal)$
+
+
+# ------------------------------------------------------------------------ #
+
+$pavucontrol = org.pulseaudio.pavucontrol|pavucontrol
+
+windowrulev2 = float, class:^($pavucontrol)$
+windowrulev2 = center, class:^($pavucontrol)$
+windowrulev2 = size 1000 700, class:^($pavucontrol)$
+windowrulev2 = pin, class:^($pavucontrol)$
+
+
+# ------------------------------------------------------------------------ #
+
+$loupe = org.gnome.Loupe|loupe|Loupe #  Image Viewer
+
+windowrulev2 = float, class:^($loupe)$
+windowrulev2 = fullscreenstate: 1, class:^($loupe)$
+
+
+# ------------------------------------------------------------------------ #
+
+## Vesktop or Discord; ##
+
+windowrulev2 = workspace: 6 silent, title:^(Vesktop)$, class:^(vesktop)$
+
+
+# ------------------------------------------------------------------------ #
+
+$telegram = org.telegram.desktop|telegram-desktop|com.ayugram.desktop|ayugram-desktop
+
+windowrulev2 = noinitialfocus, class:^($telegram)
+windowrulev2 = workspace: 6 silent, class:^($telegram)$
+
+windowrulev2 = float, class:^($telegram)$, title:^(Media viewer|Просмотр медиа)$
+windowrulev2 = size 1920 1080, class:^($telegram)$, title:^(Media viewer|Просмотр медиа)$
+
+#windowrulev2 = float, class:^($telegram)$, title:^(Save File)$
+#windowrulev2 = float, class:^($telegram)$, title:^(Save voice message|Сохранить голосовое сообщение)$
+#windowrulev2 = float, class:^($telegram)$, title:^(Save Video|Сохранить видео)$
+#windowrulev2 = float, class:^($telegram)$, title:^(Save Image|Сохранить изображение)$
+windowrulev2 = float, class:^($telegram)$, title:.*Save.*|.*Сохранить.*
+
+
+# windowrulev2 = fullscreenstate: 1, class:^($telegram)$, title:^(Media viewer|Просмотр медиа)$
+
+
+# ------------------------------------------------------------------------ #
+
+## Workspaces; ##
+
+workspace = 1, monitor:$M1, default:true
+workspace = 2, monitor:$M1, default:true
+workspace = 3, monitor:$M1, default:true
+workspace = 4, monitor:$M1, default:true
+workspace = 5, monitor:$M1, default:true
+
+workspace = 6, monitor:$M3, default:true
+workspace = 7, monitor:$M3, default:true
+workspace = 8, monitor:$M3, default:true
+workspace = 9, monitor:$M3, default:true
+workspace = 10, monitor:$M3, default:true
+
+workspace = 11, monitor:$M2, default:true
+workspace = 12, monitor:$M2, default:true
+workspace = 13, monitor:$M2, default:true
+workspace = 14, monitor:$M2, default:true
+workspace = 15, monitor:$M2, default:true
+workspace = 16, monitor:$M2, default:true
+workspace = 17, monitor:$M2, default:true
+workspace = 18, monitor:$M2, default:true
+workspace = 19, monitor:$M2, default:true
+workspace = 20, monitor:$M2, default:true
+
+

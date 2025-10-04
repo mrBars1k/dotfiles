@@ -1,0 +1,15 @@
+[user]
+	email = mrBars1k@proton.me
+	name = mrBars1k
+[color]
+	ui = auto
+
+[color "branch"]
+	current = brightyellow bold
+
+[color "status"]
+    added = green bold
+    changed = yellow ul bold
+    untracked = red bold
+[init]
+	defaultBranch = main

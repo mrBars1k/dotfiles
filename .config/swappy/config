@@ -1,0 +1,7 @@
+[Default]
+show_panel = false
+paint_mode = brush
+early_exit = true
+line_size = 2
+save_dir = $HOME/screenshots
+save_filename_format = s_%d-%m-%Y_%H-%M-%S.png
