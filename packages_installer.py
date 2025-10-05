@@ -10,11 +10,13 @@ PACMAN_PACKAGES = [
     "syncthing", "obsidian", "hyprshot", "swappy", "ntfs-3g", "duf", "dysk",
     "lact", "fastfetch", "ueberzugpp", "piper", "pipewire", "pipewire-alsa",
     "pipewire-pulse", "pipewire-jack", "wireplumber", "pavucontrol", "alacritty",
-    "kitty", "engrampa", "ark", "neovim", "chromium", "steam"
+    "kitty", "engrampa", "ark", "neovim", "chromium", "steam", "os-prober", "thunar-archive-plugin",
+    "otf-font-awesome", "ttf-nerd-fonts-symbols", "ttf-nerd-fonts-common", "ttf-nerd-fonts-symbols-mono",
+    "noto-fonts", "noto-fonts-cjk", "gvfs", "flatpak"
 ]
 
 AUR_PACKAGES = [
-    "vesktop", "gpu-screen-recorder-gtk", "sublime-text", "qdiskinfo", "ayugram-desktop-bin"
+    "vesktop", "gpu-screen-recorder-gtk", "sublime-text", "qdiskinfo", "ayugram-desktop-git", "arc-gtk-theme"
 ]
 
 LOG_FILE = "install.log"
