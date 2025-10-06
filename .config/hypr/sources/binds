@@ -23,8 +23,8 @@ bind = $mainMod, slash, exec, pkill waybar; waybar
 bind = $mainMod, x, exec, /home/mrbars1k/.config/hypr/sources/save_eyes.sh
 
 ## Choose from clipboard;
-#bind = $mainMod, V, exec, cliphist list | wofi --dmenu -I -G | cliphist decode | wl-copy
-bind = $mainMod, V, exec, /home/mrbars1k/.config/hypr/sources/wofi-choose-cliphist.sh
+bind = $mainMod, V, exec, cliphist list | wofi --dmenu -I -G | cliphist decode | wl-copy
+#bind = $mainMod, V, exec, /home/mrbars1k/.config/hypr/sources/wofi-choose-cliphist.sh
 
 ## Clear clipboard (NumPad -);
 bind = $mainMod, KP_SUBTRACT, exec, clipvault clear & cliphist wipe
