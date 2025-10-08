@@ -5,6 +5,6 @@ show_week_numbers = 0
 close_on_unfocus = 0
 close_on_mouseleave = 0
 clock_format = %a %d %b %H:%M
-force_lang = uk_UA.utf8
+force_lang = en_US.utf8
 mainwindow_decorated = 0
 mainwindow_resizable = 0
