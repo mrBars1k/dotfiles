@@ -1,5 +1,7 @@
-# ---------------------------------- Binds ------------------------------- #
-#  Open apps:
+# ------------------------------ Binds ------------------------------- #
+#
+#
+# ---------------------------- Open apps ----------------------------- #
 
 bind = $mainMod, R, exec, wofi --show drun
 bind = $mainMod, T, exec, $terminal
@@ -10,43 +12,39 @@ bind = $mainMod, U, exec, keepassxc
 bind = $mainMod, backslash, exec, deepin-calculator
 
 
-# ------------------------------------------------------------------------ #
-#  Actions:
+# ----------------------------- Actions ------------------------------ #
 
-## Restart Waybar;
+#  Restart Waybar;
 bind = $mainMod, slash, exec, pkill waybar; waybar
 
-## Screen translator;
-#bind = $mainMod, Z,  exec, grim -g "$(slurp)" - | tesseract - - > /home/mrbars1k/pytrans/tt.txt
+#  Screen translator;
+#bind = $mainMod, Z,  exec, grim -g "$(slurp)" - | tesseract - - > /$HOME/pytrans/tt.txt
 
-## Eyes saver mode;
-bind = $mainMod, x, exec, /home/mrbars1k/.config/hypr/sources/save_eyes.sh
+#  Eyes saver mode;
+bind = $mainMod, x, exec, $HOME/.dotfiles/.config/hypr/custom_scripts/save_eyes.sh
 
-## Choose from clipboard;
+#  Choose from clipboard;
 bind = $mainMod, V, exec, cliphist list | wofi --dmenu -I -G | cliphist decode | wl-copy
-#bind = $mainMod, V, exec, /home/mrbars1k/.config/hypr/sources/wofi-choose-cliphist.sh
 
-## Clear clipboard (NumPad -);
+#  Clear clipboard (NumPad -);
 bind = $mainMod, KP_SUBTRACT, exec, clipvault clear & cliphist wipe
 
-# ------------------------------------------------------------------------ #
-#  Screenshots; 
+# --------------------------- Screenshots ---------------------------- #
 
-## Region to clipboard, no edit;
+#  Region to clipboard, no edit;
 bind = ALT, 1, exec, hyprshot -m region --silent --freeze --clipboard-only
 
-## Fullscreen main monitor to clipboard, no edit;
+#  Fullscreen main monitor to clipboard, no edit;
 bind = ALT, 2, exec, hyprshot -m output -m $M1 --silent --freeze --clipboard-only
 
-## Region with edit in swappy (like lightshot) to clipboard;
+#  Region with edit in swappy (like lightshot) to clipboard;
 bind = ALT, 3, exec, hyprshot -m region --silent --freeze -clipboard-only --raw | swappy -f -
 
-## Fullscreen main monitor to folder, no edit;
+#  Fullscreen main monitor to folder, no edit;
 bind = ALT, 4, exec, hyprshot -m output -m $M1 -o $screenshots_folder
 
 
-# ------------------------------------------------------------------------ #
-#  Windows;
+# ----------------------------- Windows ------------------------------ #
 
 bind = $mainMod, F, fullscreen,
 bind = $mainMod, G, fullscreenstate, 1
@@ -55,69 +53,64 @@ bind = $mainMod, I, togglesplit,
 bind = $mainMod, C, killactive,
 
 
-# ------------------------------------------------------------------------ #
-#  Special workspace (scratchpad);
+# ------------------ Special workspace (scratchpad) ------------------ #
 
 bind = $mainMod, SPACE, togglespecialworkspace, magic
 bind = $mainMod SHIFT, SPACE, movetoworkspace, special:magic
 
 
-# ------------------------------------------------------------------------ #
-#  Move focus;
+# ---------------------------- Move focus ---------------------------- #
 
-## Vim like:
+#  Vim like:
 bind = $mainMod, H, movefocus, l
 bind = $mainMod, L, movefocus, r
 bind = $mainMod, K, movefocus, u
 bind = $mainMod, J, movefocus, d
 
-# OR #
+#  OR  #
 
-## Arrows:
+#  Arrows:
 bind = $mainMod, left, movefocus, l
 bind = $mainMod, right, movefocus, r
 bind = $mainMod, up, movefocus, u
 bind = $mainMod, down, movefocus, d
 
 
-# ------------------------------------------------------------------------ #
-#  Resize window;
+# -------------------------- Resize window --------------------------- #
 
-## Vim like:
+#  Vim like:
 bind = $mainMod CTRL, H, resizeactive, -80 0
 bind = $mainMod CTRL, L, resizeactive, 80 0
 bind = $mainMod CTRL, K, resizeactive, 0 -80
 bind = $mainMod CTRL, J, resizeactive, 0 80
 
-# OR #
+#  OR  #
 
-## Arrows:
+#  Arrows:
 bind = $mainMod CTRL, left, resizeactive, -80 0
 bind = $mainMod CTRL, right, resizeactive, 80 0
 bind = $mainMod CTRL, up, resizeactive, 0 -80
 bind = $mainMod CTRL, down, resizeactive, 0 80
 
 
-# ------------------------------------------------------------------------ #
-#  Move window;
+# --------------------------- Move window ---------------------------- #
 
-## Vim like:
+#  Vim like:
 bind = $mainMod SHIFT, H, movewindow, l
 bind = $mainMod SHIFT, L, movewindow, r
 bind = $mainMod SHIFT, K, movewindow, u
 bind = $mainMod SHIFT, J, movewindow, d
 
-# OR #
+#  OR  #
 
-## Arrows:
+#  Arrows:
 bind = $mainMod SHIFT, left, movewindow, l
 bind = $mainMod SHIFT, right, movewindow, r
 bind = $mainMod SHIFT, up, movewindow, u
 bind = $mainMod SHIFT, down, movewindow, d
 
 
-# ------------------------------------------------------------------------ #
-#  Move focus to workspace;
+# --------------------- Move focus to workspace ---------------------- #
 
 bind = $mainMod, 1, workspace, 1
 bind = $mainMod, 2, workspace, 2
@@ -137,8 +130,7 @@ bind = $mainMod LEFTALT, 3, workspace, 13
 bind = $mainMod LEFTALT, 4, workspace, 14
 bind = $mainMod LEFTALT, 5, workspace, 15
 
-# ------------------------------------------------------------------------ #
-# Move window to workspace;
+# --------------------- Move window to workspace --------------------- #
 
 bind = $mainMod SHIFT, 1, movetoworkspace, 1
 bind = $mainMod SHIFT, 2, movetoworkspace, 2
@@ -153,11 +145,10 @@ bind = $mainMod SHIFT, 9, movetoworkspace, 9
 bind = $mainMod SHIFT, 0, movetoworkspace, 10
 
 
-# ------------------------------------------------------------------------ #
-# Move/resize windows with mainMod + LMB/RMB and dragging;
+# ----- Move/resize windows with mainMod + LMB/RMB and dragging ------ #
 
 bindm = $mainMod, mouse:272, movewindow
 bindm = $mainMod, mouse:273, resizewindow
 
 
-# ------------------------------------------------------------------------ #
+# ------------------------------- End -------------------------------- #

@@ -1,6 +1,6 @@
 show=drun
 term=kitty
-lines=25
+lines=20
 columns=1
 prompt=Search...
 insensitive=true

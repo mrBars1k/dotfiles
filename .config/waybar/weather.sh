@@ -1,22 +1,14 @@
 #!/bin/bash
 
-# Координаты Харькова
 LATITUDE="49.9935"
 LONGITUDE="36.2304"
 
-# Запрос к Open-Meteo API
 WEATHER_DATA=$(curl -s "https://api.open-meteo.com/v1/forecast?latitude=${LATITUDE}&longitude=${LONGITUDE}&current=temperature_2m,weather_code,is_day&temperature_unit=celsius&forecast_days=1")
 
-# Извлечение данных с помощью jq
 TEMPERATURE=$(echo "$WEATHER_DATA" | jq -r '.current.temperature_2m | floor')
 WEATHER_CODE=$(echo "$WEATHER_DATA" | jq -r '.current.weather_code')
 IS_DAY=$(echo "$WEATHER_DATA" | jq -r '.current.is_day')
 
-# Определение значка на основе WMO Weather interpretation codes
-# Полный список кодов можно найти здесь: https://www.nodc.noaa.gov/archive/arc0021/0001928/1.1/data/0-20000-0-WMO-No.485/WMO.WMO-No.485.A.MDR02_M.xml
-# Или более читабельно: https://www.nodc.noaa.gov/archive/arc0021/0001928/1.1/data/0-20000-0-WMO-No.485/WMO.WMO-No.485.A.MDR02_M.pdf (страница 3-1-3)
-
-# Вот основные коды:
 # 0: Clear sky (Ясно)
 # 1, 2, 3: Mainly clear, partly cloudy, overcast (В основном ясно, переменная облачность, пасмурно)
 # 45, 48: Fog and depositing rime fog (Туман и изморозь)

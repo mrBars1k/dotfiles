@@ -1,4 +1,4 @@
-# ------------------------------------------------------------------------ #
+# --------------------------- Window rules --------------------------- #
 
 # Ignore maximize requests from apps. You'll probably like this.
 windowrulev2 = suppressevent maximize, class:.*
@@ -7,127 +7,123 @@ windowrulev2 = suppressevent maximize, class:.*
 windowrulev2 = nofocus, class:^$, title:^$, xwayland:1, floating:1, fullscreen:0, pinned:0
 
 
-# ------------------------------------------------------------------------ #
-#  Common:
+# ------------------------------ Common ------------------------------ #
 
 windowrulev2 = noborder, floating:1, xwayland:1
 windowrulev2 = noanim, xwayland:1
 windowrulev2 = noanim, floating:1
 windowrulev2 = opacity 1, floating:1
-
 windowrulev2 = opacity 0.980, workspace: -98 #  Special workspace;
 
-windowrulev2 = noborder, class:^(obsidian)$
+windowrulev2 = noborder, class:(?i)^(obsidian)$
 
-windowrulev2 = float, class:^(deepin-calculator)$
-windowrulev2 = move 75% 25%, class:^(deepin-calculator)$
+windowrulev2 = float, class:(?i)^(xdg-desktop-portal-gtk)$, title:(?i)^.*(open|открыть|создать|create|find|расположение|найти).*$
+windowrulev2 = size 70% 80%, class:(?i)^(xdg-desktop-portal-gtk)$, title:(?i)^.*(open|открыть|создать|create|find|расположение|найти).*$
 
+# ------------------------------ Steam ------------------------------- #
 
-# ------------------------------------------------------------------------ #
+$steam_cls = class:(?i)^(steam)$
 
-$steam = steam|Steam
+windowrulev2 = workspace: 4 silent, $steam_cls
+windowrulev2 = noanim, $steam_cls
 
-windowrulev2 = float, class:^($steam)$ #  Any window except described below;
+windowrulev2 = float, $steam_cls                                    #  float undefined windows;
+windowrulev2 = tile, $steam_cls , title:^(Steam)$                   #  tile main window;
+windowrulev2 = center, $steam_cls, title:^..*                       #  center float windows except with empty title;
 
-windowrulev2 = tile, class:^($steam)$, title:^(Steam)$
+windowrulev2 = size 17% 60%, $steam_cls, title:(?i)^(friends List|список друзей)$
+windowrulev2 = move 75% 20%, $steam_cls, title:(?i)^(friends List|список друзей)$
 
-windowrulev2 = noanim, class:^($steam)$
-windowrulev2 = workspace: 4 silent, class:^($steam)$
+windowrulev2 = size 50% 70%, $steam_cls, title:(?i)^(steam settings|настройки)$
+windowrulev2 = size 80% 90%, $steam_cls, title:(?i)^.*(browser|браузер)$
 
-windowrulev2 = float, class:^($steam)$, title:^(Friends List|Список друзей)$
-windowrulev2 = size 400 900, class:^($steam)$, title:^(Friends List|Список друзей)$
-windowrulev2 = move 1300 100, class:^($steam)$, title:^(Friends List|Список друзей)$
-
-windowrulev2 = float, class:^($steam)$, title:^(Steam Settings|Настройки)$
-windowrulev2 = size 1200 900, class:^($steam)$, title:^(Steam Settings|Настройки)$
-windowrulev2 = center, class:^($steam)$, title:^(Steam Settings|Настройки)$
-
-windowrulev2 = center, class:^($steam)$, title:.*(Browser|браузер)$
-windowrulev2 = size 90% 90%, class:^($steam)$, title:.*(Browser|браузер)$
+windowrulev2 = size 40% 40%, $steam_cls, title:(?i)^..*             #  it should be at top, but a priority bug;
 
 
-# ------------------------------------------------------------------------ #
+# ------------------------------ Swappy ------------------------------ #
 
-## Swappy - edit image (for screenshot) ##
+$swappy_cls = class:(?i)^(swappy)$
+$swappy_ttl = title:(?i)^(swappy)$
 
-windowrulev2 = opacity 1, class:^(swappy)$, title:^(swappy)$
-windowrulev2 = noanim, class:^(swappy)$, title:^(swappy)$
-windowrulev2 = float, class:^(swappy)$, title:^(swappy)$
-windowrulev2 = center, class:^(swappy)$, title:^(swappy)$
-
-
-# ------------------------------------------------------------------------ #
-
-$haruna = org.kde.haruna|haruna|Haruna
-
-windowrulev2 = float, class:^(smplayer)$, initialTitle:^(SMPlayer)$
-windowrulev2 = center, class:^(smplayer)$, initialTitle:^(SMPlayer)$
-windowrulev2 = size 1200 800, class:^(smplayer)$, initialTitle:^(SMPlayer)$
-
-windowrulev2 = noanim, class:^($haruna|haruna)$
-windowrulev2 = float, class:^($haruna|haruna)$
-windowrulev2 = size 1200 800, class:^($haruna)$
-windowrulev2 = center, class:^($haruna|haruna)$
-windowrulev2 = move 500 180, class:^($haruna|haruna)$, title:^(Select subtitles file)$
-
-# ------------------------------------------------------------------------ #
-
-$gsimplecal = gsimplecal
-
-windowrulev2 = float, class:^($gsimplecal)$, title:^($gsimplecal)$
-windowrulev2 = size 100 200, class:^($gsimplecal)$, title:^($gsimplecal)$
-windowrulev2 = move 1720 55, class:^($gsimplecal)$, title:^($gsimplecal)$
-windowrulev2 = pin, class:^($gsimplecal)$, title:^($gsimplecal)$
+windowrulev2 = noanim, $swappy_cls, $swappy_ttl
+windowrulev2 = float, $swappy_cls, $swappy_ttl
+windowrulev2 = center, $swappy_cls, $swappy_ttl
+windowrulev2 = opacity 1, $swappy_cls, $swappy_ttl
 
 
-# ------------------------------------------------------------------------ #
+# ------------------------------ Player ------------------------------ #
 
-$pavucontrol = org.pulseaudio.pavucontrol|pavucontrol
+$player_cls = class:(?i)^(org.kde.haruna|haruna|smplayer|mpv)$
+$initialTitle = initialTitle:(?i)^(org.kde.haruna|haruna|smplayer|mpv)$
 
-windowrulev2 = float, class:^($pavucontrol)$
-windowrulev2 = center, class:^($pavucontrol)$
-windowrulev2 = size 1000 700, class:^($pavucontrol)$
-windowrulev2 = pin, class:^($pavucontrol)$
-
-
-# ------------------------------------------------------------------------ #
-
-$loupe = org.gnome.Loupe|loupe|Loupe #  Image Viewer
-
-windowrulev2 = float, class:^($loupe)$
-windowrulev2 = fullscreenstate: 1, class:^($loupe)$
+windowrulev2 = noanim, $player_cls
+windowrulev2 = float, $player_cls
+windowrulev2 = center, $player_cls, $initialTitle
+windowrulev2 = size 70% 80%, $player_cls, $initialTitle
 
 
-# ------------------------------------------------------------------------ #
+# ---------------------------- Gsimplecal ---------------------------- #
 
-## Vesktop or Discord; ##
+$gsimplecal_cls = class:(?i)^(gsimplecal)$
+$gsimplecal_ttl = title:(?i)^(gsimplecal)$
 
-windowrulev2 = workspace: 6 silent, title:^(Vesktop)$, class:^(vesktop)$
-
-
-# ------------------------------------------------------------------------ #
-
-$telegram = org.telegram.desktop|telegram-desktop|com.ayugram.desktop|ayugram-desktop
-
-windowrulev2 = noinitialfocus, class:^($telegram)
-windowrulev2 = workspace: 6 silent, class:^($telegram)$
-
-windowrulev2 = float, class:^($telegram)$, title:^(Media viewer|Просмотр медиа)$
-windowrulev2 = size 1920 1080, class:^($telegram)$, title:^(Media viewer|Просмотр медиа)$
-
-#windowrulev2 = float, class:^($telegram)$, title:^(Save File)$
-#windowrulev2 = float, class:^($telegram)$, title:^(Save voice message|Сохранить голосовое сообщение)$
-#windowrulev2 = float, class:^($telegram)$, title:^(Save Video|Сохранить видео)$
-#windowrulev2 = float, class:^($telegram)$, title:^(Save Image|Сохранить изображение)$
-windowrulev2 = float, class:^($telegram)$, title:.*Save.*|.*Сохранить.*
+windowrulev2 = float, $gsimplecal_cls, $gsimplecal_ttl
+windowrulev2 = move 85% 5%, $gsimplecal_cls, $gsimplecal_ttl
+windowrulev2 = pin, $gsimplecal_cls, $gsimplecal_ttl
 
 
-# windowrulev2 = fullscreenstate: 1, class:^($telegram)$, title:^(Media viewer|Просмотр медиа)$
+# ---------------------------- Calculator ---------------------------- #
+
+windowrulev2 = float, class:(?i)^(deepin-calculator)$
+windowrulev2 = move 75% 30%, class:(?i)^(deepin-calculator)$
 
 
-# ------------------------------------------------------------------------ #
+# --------------------------- Pavucontrol ---------------------------- #
 
-## Workspaces; ##
+$pavucontrol_cls = class:(?i)^(org.pulseaudio.pavucontrol|pavucontrol)
+
+windowrulev2 = float, $pavucontrol_cls
+windowrulev2 = center, $pavucontrol_cls
+windowrulev2 = size 50% 60%, $pavucontrol_cls
+windowrulev2 = pin, $pavucontrol_cls
+
+
+# ------------------------------ Loupe ------------------------------- #
+
+$loupe_cls = class:(?i)^.*(org.gnome.Loupe|loupe).*$
+
+windowrulev2 = float, $loupe_cls
+windowrulev2 = fullscreenstate: 1, $loupe_cls
+
+
+# ----------------------------- Discord ------------------------------ #
+
+$discord_cls = class:(?i)^(vesktop|vencord|discord)$
+$discord_ttl = title:(?i)^(vesktop|vencord|discord)$
+
+windowrulev2 = workspace: 6 silent, $discord_ttl, $discord_cls
+
+
+# ----------------------------- Telegram ----------------------------- #
+
+$telegram_cls = class:(?i)^(org.telegram.desktop|telegram-desktop|com.ayugram.desktop|ayugram-desktop|ayugram)$
+
+windowrulev2 = noinitialfocus, $telegram_cls
+windowrulev2 = workspace: 6 silent, $telegram_cls
+
+windowrulev2 = float, $telegram_cls, title:(?i)^(media viewer|просмотр медиа|choose|выбрать).*$
+windowrulev2 = size 94% 96%, $telegram_cls, title:(?i)^(media viewer|просмотр медиа)$
+windowrulev2 = float, $telegram_cls, title:(?i)^.*(save|сохранить).*$
+
+
+# ------------------------------ Thunar ------------------------------ #
+
+windowrulev2 = float, class:(?i)^(thunar)$, title:(?i)^.*(rename).*$
+windowrulev2 = size 35% 20%, class:(?i)^(thunar)$, title:(?i)^.*(rename).*$
+windowrulev2 = center, class:(?i)^(thunar)$, title:(?i)^.*(rename).*$
+
+
+# ---------------------------- Workspaces ---------------------------- #
 
 workspace = 1, monitor:$M1, default:true
 workspace = 2, monitor:$M1, default:true
@@ -153,3 +149,4 @@ workspace = 19, monitor:$M2, default:true
 workspace = 20, monitor:$M2, default:true
 
 
+# ------------------------------- End -------------------------------- #

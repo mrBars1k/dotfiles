@@ -1,4 +1,5 @@
 // -*- mode: jsonc -*-
+
 {
     "output": [
       "DP-1",
@@ -8,7 +9,7 @@
 
     // "layer": "top",
     "position": "top",
-    "height": 24,
+    "height": 20,
     "spacing": 0,
     "margin-bottom": 0,
     "margin-top": 0,
@@ -35,32 +36,15 @@
         "custom/swaync"
     ],
 
-    // Modules configuration
-    // "hyprland/workspaces": {
-    //     "disable-scroll": true,
-    //     "all-outputs": true,
-    //     "warp-on-scroll": false,
-    //     "format": "{name}: {icon}",
-    //     "format-icons": {
-    //         "1": "",
-    //         "2": "",
-    //         "3": "",
-    //         "4": "",
-    //         "5": "",
-    //         "urgent": "",
-    //         "focused": "",
-    //         "default": ""
-    //     }
-    // },
-
     "hyprland/workspaces": {
         "format": "{name}: {icon}",
-        "all-outputs": false, // Раздельно для каждого монитора;
-	      
+        "all-outputs": false, // раздельно для каждого монитора;
         "format-icons": {
-            "1": "󰈹",
-            "2": "",
+            "1": "",
+            "2": "󰈹",
+            "3": "",
             "4": "󰓓",
+            "5": "",
             "6": "󰭻",
             "10": "",
             "urgent": "",
@@ -82,7 +66,7 @@
     },
 
     "tray": {
-        "icon-size": 20,
+        "icon-size": 16,
         "spacing": 10
     },
 
@@ -110,10 +94,22 @@
     "temperature": {
         "interval": 1,
         "format": "{temperatureC} {icon}",
-        "hwmon-path": "/sys/class/hwmon/hwmon0/temp1_input",
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
         "critical-threshold": 70,
         "format-critical": "{temperatureC} {icon}",
         "format-icons": [""]
+    },
+
+    "custom/gpu_temp": {
+        "format": "{}  ",
+        "exec": "~/.config/waybar/gpu_temp.sh",
+        "interval": 1
+    },
+
+    "custom/gpu_vram": {
+        "exec": "~/.config/waybar/gpu_vram.sh",
+        "interval": 1,
+        "format": "{}  "
     },
 
     "pulseaudio": {
@@ -154,18 +150,6 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
-    },
-
-    "custom/gpu_temp": {
-        "format": "{}  ",
-        "exec": "~/.config/waybar/gpu_temp.sh",
-        "interval": 1
-    },
-
-    "custom/gpu_vram": {
-        "exec": "~/.config/waybar/gpu_vram.sh",
-        "interval": 1,
-        "format": "{}  "
     },
 
     "custom/weather": {

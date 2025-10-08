@@ -14,6 +14,30 @@
   font-family: "Noto Sans", "sans-serif";
 }
 
+#custom-weather,
+#custom-gpu_vram,
+#custom-gpu_temp,
+#custom-swaync,
+#temperature,
+#cpu,
+#memory,
+#language,
+#tray,
+#workspaces,
+#clock,
+#window,
+#pulseaudio,
+#network {
+  padding: 4px 8px;
+  background-color: #303643;
+  border-radius: 15px;
+  margin: 5px 3px;
+}
+
+#workspaces {
+  padding: 4px 6px;
+}
+
 #workspaces button {
   margin-left: 5px;
   margin-right: 7px;
@@ -27,31 +51,11 @@
   border-radius: 20px;
 }
 
-#custom-gpu_vram,
-#custom-weather,
-#custom-gpu_temp,
-#custom-swaync,
-#language,
-#tray,
-#cpu,
-#temperature,
-#memory,
-#workspaces,
-#clock,
-#window,
-#pulseaudio,
-#network {
-  padding: 4px 8px;
-  background-color: #303643;
-  border-radius: 30px;
-  margin: 6px 4px;
-}
-
 #custom-swaync {
   padding: 5px 9px;
   padding-left: 8px;
   min-width: 15px;
-  margin-right: 5px;
+  margin-right: 6px;
   margin-left: 1px;
 }
 
@@ -60,7 +64,8 @@
 }
 
 #tray {
-  margin-left: 5px;
+  margin-left: 4px;
+  margin-right: 4px;
 }
 
 #custom-updates {
@@ -69,12 +74,10 @@
 
 #pulseaudio {
   color: #0fb9b1;
-  padding-right: 10px;
 }
 
 #cpu {
   color: #61afef;
-  padding-right: 14px;
 }
 
 #temperature {
@@ -88,6 +91,7 @@
 #network {
   color: #c678dd;
   min-width: 200px;
+  padding: 0 0 0 0;
 }
 
 #clock {
@@ -98,14 +102,34 @@
   color: #578bf2;
 }
 
-#network {
-  padding: 0 0 0 0;
-}
-
 #custom-gpu_temp {
   color: red;
 }
 
 #custom-vram {
   color: pink;
+}
+
+#custom-gpu_vram,
+#custom-gpu_temp,
+#temperature,
+#cpu,
+#memory {
+  background-color: rgba(255, 239, 0, 0.1);
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 0;
+  padding: 4px 5px;
+}
+
+#cpu {
+  border-bottom-left-radius: 15;
+  border-top-left-radius: 15;
+  padding-left: 10px;
+}
+
+#custom-gpu_vram {
+  border-bottom-right-radius: 15;
+  border-top-right-radius: 15;
+  padding-right: 10px;
 }

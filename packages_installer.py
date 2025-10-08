@@ -3,20 +3,24 @@ import subprocess
 import time
 import re
 
+
 PACMAN_PACKAGES = [
-    "git", "hyprland", "waybar", "wofi", "swaync", "ranger",
-    "thunar", "haruna", "smplayer", "deepin-calculator", "deepin-calendar",
-    "gsimplecal", "qbittorrent", "loupe", "cliphist", "copyq", "keepassxc",
-    "syncthing", "obsidian", "hyprshot", "swappy", "ntfs-3g", "duf", "dysk",
-    "lact", "fastfetch", "ueberzugpp", "piper", "pipewire", "pipewire-alsa",
-    "pipewire-pulse", "pipewire-jack", "wireplumber", "pavucontrol", "alacritty",
-    "kitty", "engrampa", "ark", "neovim", "chromium", "steam", "os-prober", "thunar-archive-plugin",
-    "otf-font-awesome", "ttf-nerd-fonts-symbols", "ttf-nerd-fonts-common", "ttf-nerd-fonts-symbols-mono",
-    "noto-fonts", "noto-fonts-cjk", "gvfs", "flatpak"
+    "hyprland", "hyprshot", "hyprsunset", "waybar", "wofi", "swaync", "swappy", "networkmanager",
+    "kitty", "alacritty", "ranger", "ueberzugpp", "fastfetch", "neovim", "zsh",
+    "duf", "dysk", "os-prober", "ntfs-3g", "syncthing", "obsidian", "flatpak",
+    "pipewire", "pipewire-alsa", "pipewire-pulse", "pipewire-jack", "wireplumber", "pavucontrol",
+    "cliphist", "wl-clipboard", "copyq", "git",
+    "thunar", "thunar-archive-plugin", "thunar-volman", "tumbler", "gvfs", 
+    "firefox", "chromium", "qbittorrent", "keepassxc",
+    "engrampa", "ark", "unzip", "gzip",
+    "noto-fonts", "noto-fonts-cjk", "otf-font-awesome", "ttf-nerd-fonts-symbols", "ttf-nerd-fonts-symbols-common",
+    "steam", "piper", "lact", "btop", "qt5ct", "qt6ct",
+    "gsimplecal", "loupe", "smplayer", "haruna", "deepin-calculator",
 ]
 
 AUR_PACKAGES = [
-    "vesktop", "gpu-screen-recorder-gtk", "sublime-text", "qdiskinfo", "ayugram-desktop-git", "arc-gtk-theme"
+    "vesktop", "gpu-screen-recorder-gtk", "sublime-text", "qdiskinfo", 
+    "arc-gtk-theme", "arc-icon-theme", "adwaita-dark"
 ]
 
 LOG_FILE = "install.log"
@@ -60,6 +64,9 @@ def install_packages(packages, manager, command_list, extra_flags=None):
     """
 
     failed_packages = []
+
+    with open(LOG_FILE, "a") as f:
+        f.write(f"\n{'='*20} Установка пакетов {manager}: {'='*20}\n")
 
     for n, pckg in enumerate(packages, start=1):
         start_time = time.time()
@@ -113,8 +120,14 @@ def main():
     )
     log("Обновление репозиториев", "Pacman", result.stdout)
 
+
     print("\n=== Установка pacman пакетов ===\n")
-    failed_pacman = install_packages(PACMAN_PACKAGES, "Pacman", ["sudo", "pacman"])
+    failed_pacman = install_packages(
+        PACMAN_PACKAGES, 
+        "Pacman", 
+        ["sudo", "pacman"]
+    )
+
 
     print("\n=== Установка AUR пакетов через paru ===\n")
     failed_aur = install_packages(
@@ -123,6 +136,7 @@ def main():
         ["paru"],
         extra_flags=["--skipreview", "--cleanafter"]
     )
+
 
     all_failed = failed_pacman + failed_aur
 
@@ -136,6 +150,7 @@ def main():
     else:
         print("\nВсе пакеты успешно установлены! 🎉")
 
+
     print("\n=== Очистка кэша pacman ===")
     result = subprocess.run(
         ["sudo", "pacman", "-Scc", "--noconfirm"],
@@ -146,6 +161,7 @@ def main():
     log("Очистка кэша", "Pacman", result.stdout)
     print("✅ Кэш pacman очищен")
 
+
     print("\n=== Очистка кэша paru ===")
     result = subprocess.run(
         ["paru", "-Scc", "--noconfirm"],
@@ -155,6 +171,7 @@ def main():
     )
     log("Очистка кэша", "Paru", result.stdout)
     print("✅ Кэш paru очищен")
+
 
     print("\n=== Общий объём установленных пакетов ===")
     print(f"Total Download Size:   {total_download:.2f} MiB")

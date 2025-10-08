@@ -1,7 +1,11 @@
 __pycache__/
+
 .config/vesktop/*
 !.config/vesktop/settings.json
 !.config/vesktop/settings/
 !.config/vesktop/settings/settings.json
-install.log
+
 .config/ranger/plugins/*
+
+install.log
+

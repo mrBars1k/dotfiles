@@ -1,13 +1,12 @@
+# ---------------------------- Autostart ----------------------------- #
+
 #exec-once = $terminal
-exec-once = hyprpaper
 exec-once = waybar
+exec-once = hyprpaper
 exec-once = LC_TIME=ru_RU.UTF-8 AyuGram
 exec-once = vesktop --enable-features=UseOzonePlatform --ozone-platform=wayland
-
 exec-once = cliphist wipe
 exec-once = wl-paste --type text --watch cliphist store 
 exec-once = wl-paste --type image --watch cliphist store
-
 exec-once = wl-clip-persist -c regular #  Don't delete copied when close an app;
-
-exec-once = xrandr --output DP-1 --primary
+exec-once = xrandr --output DP-1 --primary #  Main monitor;
