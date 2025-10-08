@@ -23,6 +23,8 @@ AUR_PACKAGES = [
     "arc-gtk-theme", "arc-icon-theme", "adwaita-dark"
 ]
 
+#  obs-studio from flatpak, make ayugram-desktop-git manually;
+
 LOG_FILE = "install.log"
 
 total_download = 0.0
