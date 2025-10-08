@@ -5,7 +5,7 @@ import re
 
 
 PACMAN_PACKAGES = [
-    "hyprland", "hyprshot", "hyprsunset", "waybar", "wofi", "swaync", "swappy", "networkmanager",
+    "hyprland", "hyprshot", "hyprsunset", "hyprpaper", "waybar", "wofi", "swaync", "swappy", "networkmanager",
     "kitty", "alacritty", "ranger", "ueberzugpp", "fastfetch", "neovim", "zsh", "sddm",
     "duf", "dysk", "os-prober", "ntfs-3g", "syncthing", "obsidian", "flatpak",
     "pipewire", "pipewire-alsa", "pipewire-pulse", "pipewire-jack", "wireplumber", "pavucontrol",
