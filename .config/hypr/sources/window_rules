@@ -53,8 +53,8 @@ windowrulev2 = opacity 1, $swappy_cls, $swappy_ttl
 
 # ------------------------------ Player ------------------------------ #
 
-$player_cls = class:(?i)^(org.kde.haruna|haruna|smplayer|mpv)$
-$initialTitle = initialTitle:(?i)^(org.kde.haruna|haruna|smplayer|mpv)$
+$player_cls = class:(?i)^(org.kde.haruna|haruna|smplayer|mpv|mpc-qt|io.github.mpc_qt.mpc-qt)$
+$initialTitle = initialTitle:(?i)^(org.kde.haruna|haruna|smplayer|mpv|.*media player.*)$
 
 windowrulev2 = noanim, $player_cls
 windowrulev2 = float, $player_cls

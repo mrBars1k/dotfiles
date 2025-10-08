@@ -18,6 +18,11 @@ files=(
     .config/vesktop
     .config/gsimplecal
     .config/fastfetch
+    .config/gtk-4.0
+    .config/gtk-3.0
+    .config/qt5ct
+    .config/qt6ct
+    .config/mpc-qt
 )
 
 for i in "${files[@]}"; do

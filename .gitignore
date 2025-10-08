@@ -5,6 +5,19 @@ __pycache__/
 !.config/vesktop/settings/
 !.config/vesktop/settings/settings.json
 
+.config/gtk-4.0/*
+.config/gtk-3.0/*
+!.config/gtk-4.0/settings.ini
+!.config/gtk-3.0/settings.ini
+
+.config/mpc-qt/*
+!.config/mpc-qt/settings.json
+
+.config/qt5ct/*
+.config/qt6ct/*
+!.config/qt5ct/qt5ct.conf*
+!.config/qt6ct/qt6ct.conf*
+
 .config/ranger/plugins/*
 
 install.log
