@@ -8,6 +8,7 @@ files=(
     .sqliterc
     .vimrc
     .gitconfig
+    .user-dirs.dirs
     .config/hypr
     .config/waybar
     .config/swaync
@@ -23,6 +24,7 @@ files=(
     .config/qt5ct
     .config/qt6ct
     .config/mpc-qt
+    .config/user-dirs.dirs
 )
 
 for i in "${files[@]}"; do
