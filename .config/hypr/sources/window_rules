@@ -28,7 +28,8 @@ windowrulev2 = workspace: 4 silent, $steam_cls
 windowrulev2 = noanim, $steam_cls
 
 windowrulev2 = float, $steam_cls                                    #  float undefined windows;
-windowrulev2 = tile, $steam_cls, title:^(Steam)$                   #  tile main window;
+windowrulev2 = size 45% 50%, $steam_cls                             #  resize undefined windows;
+windowrulev2 = tile, $steam_cls, title:^(Steam)$                    #  tile main window;
 windowrulev2 = center, $steam_cls, title:^..*                       #  center float windows except with empty title;
 
 windowrulev2 = size 17% 60%, $steam_cls, title:(?i)^(friends List|список друзей)$

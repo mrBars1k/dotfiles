@@ -639,7 +639,7 @@
             "enabled": false
         },
         "VolumeBooster": {
-            "enabled": false,
+            "enabled": true,
             "multiplier": 2
         },
         "WebKeybinds": {
@@ -707,7 +707,7 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1759597540134
+        "settingsSyncVersion": 1760035570562
     },
     "eagerPatches": false
 }
