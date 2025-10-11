@@ -8,7 +8,7 @@ files=(
     .sqliterc
     .vimrc
     .gitconfig
-    .user-dirs.dirs
+    user-dirs.dirs
     .config/hypr
     .config/waybar
     .config/swaync
