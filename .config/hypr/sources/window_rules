@@ -123,6 +123,14 @@ windowrulev2 = size 35% 20%, class:(?i)^(thunar)$, title:(?i)^.*(rename).*$
 windowrulev2 = center, class:(?i)^(thunar)$, title:(?i)^.*(rename).*$
 
 
+# --------------------------- qBittorrent ---------------------------- #
+
+$qtorrent_cls = class:(?i)^(org.qbittorrent.qbittorrent|qbittorrent)$ 
+
+windowrulev2 = float, $qtorrent_cls, title:(?i)^..*$
+windowrulev2 = tile, $qtorrent_cls, title:(?i)^(qbittorrent.*)$
+
+
 # ---------------------------- Workspaces ---------------------------- #
 
 workspace = 1, monitor:$M1, default:true
