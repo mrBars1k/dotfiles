@@ -112,7 +112,7 @@ windowrulev2 = noinitialfocus, $telegram_cls
 windowrulev2 = workspace: 6 silent, $telegram_cls
 
 windowrulev2 = float, $telegram_cls, title:(?i)^(media viewer|просмотр медиа|choose|выбрать).*$
-windowrulev2 = size 94% 96%, $telegram_cls, title:(?i)^(media viewer|просмотр медиа)$
+windowrulev2 = size 99% 98%, $telegram_cls, title:(?i)^(media viewer|просмотр медиа)$
 windowrulev2 = float, $telegram_cls, title:(?i)^.*(save|сохранить).*$
 
 
