@@ -33,3 +33,4 @@ alias ls='ls --color=auto'
 alias lah="ls -lAh"
 alias grep='grep --color=auto'
 alias vim="nvim"
+alias vpn="~/.dotfiles/./vpn.sh"
