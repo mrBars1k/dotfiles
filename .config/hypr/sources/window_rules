@@ -68,7 +68,7 @@ $gsimplecal_cls = class:(?i)^(gsimplecal)$
 $gsimplecal_ttl = title:(?i)^(gsimplecal)$
 
 windowrulev2 = float, $gsimplecal_cls, $gsimplecal_ttl
-windowrulev2 = move 85% 5%, $gsimplecal_cls, $gsimplecal_ttl
+windowrulev2 = move onscreen cursor 100%-w-10 10, $gsimplecal_cls, $gsimplecal_ttl
 windowrulev2 = pin, $gsimplecal_cls, $gsimplecal_ttl
 
 
