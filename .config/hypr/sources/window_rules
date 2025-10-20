@@ -17,7 +17,7 @@ windowrulev2 = opacity 0.980, workspace: -98 #  Special workspace;
 
 windowrulev2 = noborder, class:(?i)^(obsidian)$
 
-windowrulev2 = float, class:(?i)^(xdg-desktop-portal-gtk)$, title:(?i)^.*(open|открыть|создать|create|find|расположение|найти).*$
+windowrulev2 = float, class:(?i)^(xdg-desktop-portal-gtk)$, title:(?i)^.*(open|открыть|создать|create|find|расположение|найти|.*?.*).*$
 windowrulev2 = size 70% 80%, class:(?i)^(xdg-desktop-portal-gtk)$, title:(?i)^.*(open|открыть|создать|create|find|расположение|найти).*$
 
 # ------------------------------ Steam ------------------------------- #
