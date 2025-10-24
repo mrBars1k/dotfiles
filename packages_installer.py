@@ -12,7 +12,7 @@ PACMAN_PACKAGES = [
     "cliphist", "wl-clipboard", "copyq", "git",
     "thunar", "thunar-archive-plugin", "thunar-volman", "tumbler", "gvfs", 
     "firefox", "chromium", "qbittorrent", "keepassxc",
-    "engrampa", "ark", "unzip", "gzip", "7zip",
+    "engrampa", "ark", "unzip", "gzip", "7zip", "unrar",
     "noto-fonts", "noto-fonts-cjk", "otf-font-awesome", "ttf-nerd-fonts-symbols", "ttf-nerd-fonts-symbols-common",
     "steam", "piper", "lact", "btop", "qt5ct", "qt6ct",
     "gsimplecal", "loupe", "smplayer", "haruna", "deepin-calculator",
