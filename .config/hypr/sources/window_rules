@@ -24,7 +24,7 @@ windowrulev2 = size 70% 80%, class:(?i)^(xdg-desktop-portal-gtk)$, title:(?i)^.*
 
 $steam_cls = class:(?i)^(steam)$
 
-windowrulev2 = workspace: 4 silent, $steam_cls
+windowrulev2 = workspace 4 silent, $steam_cls
 windowrulev2 = noanim, $steam_cls
 
 windowrulev2 = float, $steam_cls                                    #  float undefined windows;
@@ -53,8 +53,10 @@ windowrulev2 = opacity 1, $swappy_cls, $swappy_ttl
 
 # ------------------------------ Player ------------------------------ #
 
-$player_cls = class:(?i)^(org.kde.haruna|haruna|smplayer|mpv|mpc-qt|io.github.mpc_qt.mpc-qt)$
-$initialTitle = initialTitle:(?i)^(org.kde.haruna|haruna|smplayer|mpv|.*media player.*)$
+$player_cls = class:(?i)^(org.kde.haruna|haruna|mpv|mpc-qt|io.github.mpc_qt.mpc-qt)$
+$initialTitle = initialTitle:(?i)^(org.kde.haruna|haruna|mpv|.*media player.*)$
+
+windowrulev2 = float, class:(?i)^(smplayer)$
 
 windowrulev2 = noanim, $player_cls
 windowrulev2 = float, $player_cls
@@ -93,7 +95,7 @@ windowrulev2 = pin, $pavucontrol_cls
 $loupe_cls = class:(?i)^.*(org.gnome.Loupe|loupe).*$
 
 windowrulev2 = float, $loupe_cls
-windowrulev2 = fullscreenstate: 1, $loupe_cls
+windowrulev2 = fullscreenstate 1, $loupe_cls
 
 
 # ----------------------------- Discord ------------------------------ #
@@ -101,7 +103,7 @@ windowrulev2 = fullscreenstate: 1, $loupe_cls
 $discord_cls = class:(?i)^(vesktop|vencord|discord)$
 $discord_ttl = title:(?i)^(vesktop|vencord|discord)$
 
-windowrulev2 = workspace: 6 silent, $discord_ttl, $discord_cls
+windowrulev2 = workspace 6 silent, $discord_ttl, $discord_cls
 
 
 # ----------------------------- Telegram ----------------------------- #
@@ -109,7 +111,7 @@ windowrulev2 = workspace: 6 silent, $discord_ttl, $discord_cls
 $telegram_cls = class:(?i)^(org.telegram.desktop|telegram-desktop|com.ayugram.desktop|ayugram-desktop|ayugram)$
 
 windowrulev2 = noinitialfocus, $telegram_cls
-windowrulev2 = workspace: 6 silent, $telegram_cls
+windowrulev2 = workspace 6 silent, $telegram_cls
 
 windowrulev2 = float, $telegram_cls, title:(?i)^(media viewer|просмотр медиа|choose|выбрать).*$
 windowrulev2 = size 99% 98%, $telegram_cls, title:(?i)^(media viewer|просмотр медиа)$
