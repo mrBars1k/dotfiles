@@ -11,7 +11,6 @@ bind = $mainMod, O, exec, obsidian
 bind = $mainMod, U, exec, keepassxc
 bind = $mainMod, backslash, exec, deepin-calculator
 
-
 # ----------------------------- Actions ------------------------------ #
 
 #  Restart Waybar;
