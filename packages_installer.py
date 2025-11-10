@@ -9,7 +9,7 @@ PACMAN_PACKAGES = [
     "kitty", "alacritty", "ranger", "ueberzugpp", "fastfetch", "neovim", "zsh", "sddm", "networkmanager",
     "duf", "dysk", "ntfs-3g", "syncthing", "obsidian", "flatpak",
     "pipewire", "pipewire-alsa", "pipewire-pulse", "pipewire-jack", "wireplumber", "pavucontrol",
-    "cliphist", "wl-clipboard", "copyq", "git",
+    "cliphist", "wl-clipboard", "copyq", "git", "wl-clip-persist",
     "thunar", "thunar-archive-plugin", "thunar-volman", "tumbler", "gvfs", 
     "firefox", "chromium", "qbittorrent", "keepassxc",
     "engrampa", "ark", "unzip", "gzip", "7zip", "unrar",
