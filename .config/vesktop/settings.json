@@ -1,6 +1,6 @@
 {
     "discordBranch": "stable",
-    "minimizeToTray": true,
+    "minimizeToTray": false,
     "arRPC": false,
     "splashColor": "rgb(239, 239, 240)",
     "splashBackground": "rgb(32, 32, 36)",
@@ -8,7 +8,7 @@
     "enableMenu": false,
     "tray": true,
     "clickTrayToShowHide": true,
-    "disableMinSize": true,
+    "disableMinSize": false,
     "appBadge": true,
     "hardwareAcceleration": true,
     "spellCheckLanguages": [
@@ -17,5 +17,6 @@
         "ru-RU",
         "ru"
     ],
-    "hardwareVideoAcceleration": true
+    "hardwareVideoAcceleration": false,
+    "customTitleBar": false
 }
