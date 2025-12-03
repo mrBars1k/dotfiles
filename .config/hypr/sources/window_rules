@@ -133,6 +133,14 @@ windowrulev2 = float, $qtorrent_cls, title:(?i)^..*$
 windowrulev2 = tile, $qtorrent_cls, title:(?i)^(qbittorrent.*)$
 
 
+# -------------------------- mission-center -------------------------- #
+
+$taskmgr_cls = class:(?i)^(io.missioncenter.MissionCenter)$
+
+windowrulev2 = float, $taskmgr_cls, title:(?i)^..*$
+windowrulev2 = size 60% 60%, $taskmgr_cls, title:(?i)^..*$
+
+
 # ---------------------------- Workspaces ---------------------------- #
 
 workspace = 1, monitor:$M1, default:true

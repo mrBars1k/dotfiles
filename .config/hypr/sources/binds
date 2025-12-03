@@ -10,6 +10,7 @@ bind = $mainMod, E, exec, $fileManager
 bind = $mainMod, O, exec, obsidian
 bind = $mainMod, U, exec, keepassxc
 bind = $mainMod, backslash, exec, deepin-calculator
+bind = $mainMod, N, exec, missioncenter
 
 # ----------------------------- Actions ------------------------------ #
 
