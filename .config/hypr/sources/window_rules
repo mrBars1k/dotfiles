@@ -117,6 +117,7 @@ windowrulev2 = float, $telegram_cls, title:(?i)^(media viewer|просмотр �
 windowrulev2 = size 99% 98%, $telegram_cls, title:(?i)^(media viewer|просмотр медиа)$
 windowrulev2 = float, $telegram_cls, title:(?i)^.*(save|сохранить).*$
 
+windowrulev2 = size 70% 80%, $telegram_cls, title:(?i)^)save.*$
 
 # ------------------------------ Thunar ------------------------------ #
 
