@@ -20,7 +20,10 @@ bind = $mainMod, S, exec, strawberry
 bind = $mainMod, slash, exec, pkill waybar; waybar
 
 #  Screen translator;
-#bind = $mainMod, Z,  exec, grim -g "$(slurp)" - | tesseract - - > /$HOME/pytrans/tt.txt
+#bind = $mainMod, Q,  exec, grim -g "$(slurp)" - | tesseract - - > /home/mrbars1k/mnt/vendetta/projects/pytrans/tt.txt
+
+bind = $mainMod, Z, exec, rm -f ~/mnt/vendetta/projects/pytrans/screenshot.png && grim -g "$(slurp)" ~/mnt/vendetta/projects/pytrans/screenshot.png
+
 
 #  Eyes saver mode;
 bind = $mainMod, x, exec, $HOME/.dotfiles/.config/hypr/custom_scripts/save_eyes.sh

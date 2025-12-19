@@ -13,3 +13,8 @@ alias ls='ls --color=auto'
 alias lah="ls -lAh"
 alias grep='grep --color=auto'
 alias vim="nvim"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/mrbars1k/.lmstudio/bin"
+# End of LM Studio CLI section
+

@@ -27,6 +27,19 @@ ranger() {
     rm -f "$tempfile"
 }
 
+parse() {
+    cd /home/mrbars1k/Melon || return
+    source venv/bin/activate
+    python3 main.py parse "$@" --use mangalib
+}
+
+build-manga() {
+    cd /home/mrbars1k/Melon || return
+    source venv/bin/activate
+    python3 main.py build-manga "$@" --use mangalib
+}
+
+
 # ----------------------------- Aliases ------------------------------ #
 
 alias ls='ls --color=auto'
@@ -34,3 +47,8 @@ alias lah="ls -lAh"
 alias grep='grep --color=auto'
 alias vim="nvim"
 alias vpn="~/.dotfiles/./vpn.sh"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/mrbars1k/.lmstudio/bin"
+# End of LM Studio CLI section
+
