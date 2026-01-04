@@ -433,8 +433,7 @@
                             "1366136461409390654",
                             "796800380470034503",
                             "801927752453193758",
-                            "583024411112636422",
-                            "674155124133724180"
+                            "583024411112636422"
                         ]
                     }
                 ]
@@ -707,7 +706,7 @@
         "authenticated": false,
         "url": "https://api.vencord.dev/",
         "settingsSync": false,
-        "settingsSyncVersion": 1765801483534
+        "settingsSyncVersion": 1766757286198
     },
     "eagerPatches": false,
     "uiElements": {

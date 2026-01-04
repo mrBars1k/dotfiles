@@ -3,7 +3,7 @@
     "minimizeToTray": true,
     "arRPC": false,
     "splashColor": "rgb(239, 239, 240)",
-    "splashBackground": "rgb(32, 32, 36)",
+    "splashBackground": "rgb(18, 18, 20)",
     "staticTitle": true,
     "enableMenu": false,
     "tray": true,
@@ -17,7 +17,7 @@
         "ru-RU",
         "ru"
     ],
-    "hardwareVideoAcceleration": true,
+    "hardwareVideoAcceleration": false,
     "customTitleBar": false,
     "enableSplashScreen": false,
     "splashPixelated": false,
