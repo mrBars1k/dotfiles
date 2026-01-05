@@ -1,148 +1,282 @@
 # --------------------------- Window rules --------------------------- #
 
-# Ignore maximize requests from apps. You'll probably like this.
-windowrulev2 = suppressevent maximize, class:.*
+windowrule {
+    # Ignore maximize requests from all apps
+    name = suppress-maximize-events
+    match:class = .*
 
-# Fix some dragging issues with XWayland
-windowrulev2 = nofocus, class:^$, title:^$, xwayland:1, floating:1, fullscreen:0, pinned:0
+    suppress_event = maximize
+}
 
+windowrule {
+    # Fix some dragging issues with XWayland
+    name = fix-xwayland-drags
+    match:class = ^$
+    match:title = ^$
+    match:xwayland = yes
+    match:float = yes
+    match:fullscreen = no
+    match:pin = no
+
+    no_focus = true
+}
 
 # ------------------------------ Common ------------------------------ #
 
-windowrulev2 = noborder, floating:1, xwayland:1
-windowrulev2 = noanim, xwayland:1
-windowrulev2 = noanim, floating:1
-windowrulev2 = opacity 1, floating:1
-windowrulev2 = opacity 0.980, workspace: -98 #  Special workspace;
+windowrule = border_size 0, match:float 1, match:xwayland 1
+windowrule = no_anim 1, match:xwayland 1
 
-windowrulev2 = noborder, class:(?i)^(obsidian)$
+windowrule {
+	name = special-workspace
+	match:workspace = special:magic
 
-windowrulev2 = float, class:(?i)^(xdg-desktop-portal-gtk)$, title:(?i)^.*(open|открыть|создать|create|find|расположение|найти|.*?.*).*$
-windowrulev2 = size 70% 80%, class:(?i)^(xdg-desktop-portal-gtk)$, title:(?i)^.*(open|открыть|создать|create|find|расположение|найти).*$
+	opacity = 0.980
+}
 
-windowrulev2 = move 50% 25%, class:(?i)^(org.kde.ark)$, title:(?i)^.*(password).*$
+windowrule {
+	name = dialog-boxes
+	match:title = (?i)^.*(open|find|create|select|choose|save|открыть|расположение|найти|создать|выбрать|сохранить).*$
+
+    float = true
+    center = true
+    size = (monitor_w*0.7) (monitor_h*0.75)
+}
 
 # ------------------------------ Steam ------------------------------- #
 
-$steam_cls = class:(?i)^(steam)$
+$steam_cls = (?i)^(steam)$
 
-windowrulev2 = workspace 4 silent, $steam_cls
-windowrulev2 = noanim, $steam_cls
+windowrule {
+	name = steam-global
+	match:class = $steam_cls
+	match:title = ^..*$
 
-windowrulev2 = float, $steam_cls                                    #  float undefined windows;
-windowrulev2 = tile, $steam_cls, title:^(Steam)$                    #  tile main window;
-windowrulev2 = center, $steam_cls, title:^..*                       #  center float windows except with empty title;
+	no_anim = yes
+	float = yes	
+	center = yes
+	workspace = 4 silent
 
-windowrulev2 = size 17% 60%, $steam_cls, title:(?i)^(friends list|список друзей)$
-windowrulev2 = move 75% 20%, $steam_cls, title:(?i)^(friends list|список друзей)$
+	#  float and center undefined windows;
+}
 
-windowrulev2 = size 50% 70%, $steam_cls, title:(?i)^(steam settings|настройки)$
-windowrulev2 = size 80% 90%, $steam_cls, title:(?i)^.*(browser|браузер)$
+windowrule {
+	name = steam-others
+	match:class = $steam_cls
+	match:title = (?i)^..*$
 
-windowrulev2 = size 40% 40%, $steam_cls, title:(?i)^..*             #  it should be at top, but a priority bug;
+	float = yes
+	size = *monitor_w*0.2) (monitor_h*0.2)
+}
 
+windowrule {
+	name = steam-friends
+	match:title = (?i)^(friends list|список друзей)$
 
-# ------------------------------ Swappy ------------------------------ #
+	size = (monitor_w*0.18) (monitor_h*0.65)
+	move = (monitor_w*0.75) (monitor_h*0.20)
+}
 
-$swappy_cls = class:(?i)^(swappy)$
-$swappy_ttl = title:(?i)^(swappy)$
+windowrule {
+	name = steam-settings
+	match:title = (?i)^(steam settings|настройки)$
+	match:class = $steam_cls
 
-windowrulev2 = noanim, $swappy_cls, $swappy_ttl
-windowrulev2 = float, $swappy_cls, $swappy_ttl
-windowrulev2 = center, $swappy_cls, $swappy_ttl
-windowrulev2 = opacity 1, $swappy_cls, $swappy_ttl
+	size = (monitor_w*0.5) (monitor_h*0.7)
+}
 
+windowrule {
+	name = steam-browser
+	match:title = (?i)^.*(browser|браузер)$
+	match:class = $steam_cls
+
+	size = (monitor_w*0.8) (monitor_h*0.9)
+}
+
+windowrule = tile 1, match:class $steam_cls, match:title $steam_cls #  tile main window;
 
 # ------------------------------ Player ------------------------------ #
 
-$player_cls = class:(?i)^(org.kde.haruna|haruna|mpv|mpc-qt|io.github.mpc_qt.mpc-qt)$
-$initialTitle = initialTitle:(?i)^(org.kde.haruna|haruna|mpv|.*media player.*)$
+$player_cls = (?i)^(org.kde.haruna|haruna|mpv|mpc-qt|io.github.mpc_qt.mpc-qt|smplayer)$
+$player_init_ttl = (?i)^(org.kde.haruna|haruna|mpv|.*media player.*)$
 
-windowrulev2 = float, class:(?i)^(smplayer)$
+windowrule {
+	name = players-global
+	match:class = $player_cls
 
-windowrulev2 = noanim, $player_cls
-windowrulev2 = float, $player_cls
-windowrulev2 = center, $player_cls, $initialTitle
-windowrulev2 = size 70% 80%, $player_cls, $initialTitle
+	float = yes
+	no_anim = yes
+}
 
+windowrule {
+	name = players-main
+	match:class = $player_cls
+	match:initial_title = $player_init_ttl
 
-# ---------------------------- Gsimplecal ---------------------------- #
-
-$gsimplecal_cls = class:(?i)^(gsimplecal)$
-$gsimplecal_ttl = title:(?i)^(gsimplecal)$
-
-windowrulev2 = float, $gsimplecal_cls, $gsimplecal_ttl
-windowrulev2 = move onscreen cursor 100%-w-10 10, $gsimplecal_cls, $gsimplecal_ttl
-windowrulev2 = pin, $gsimplecal_cls, $gsimplecal_ttl
-
-
-# ---------------------------- Calculator ---------------------------- #
-
-windowrulev2 = float, class:(?i)^(deepin-calculator)$
-windowrulev2 = move 75% 30%, class:(?i)^(deepin-calculator)$
-
-
-# --------------------------- Pavucontrol ---------------------------- #
-
-$pavucontrol_cls = class:(?i)^(org.pulseaudio.pavucontrol|pavucontrol)
-
-windowrulev2 = float, $pavucontrol_cls
-windowrulev2 = center, $pavucontrol_cls
-windowrulev2 = size 50% 60%, $pavucontrol_cls
-windowrulev2 = pin, $pavucontrol_cls
-
-
-# ------------------------------ Loupe ------------------------------- #
-
-$loupe_cls = class:(?i)^.*(org.gnome.Loupe|loupe).*$
-
-windowrulev2 = float, $loupe_cls
-windowrulev2 = fullscreenstate 1, $loupe_cls
-
-
-# ----------------------------- Discord ------------------------------ #
-
-$discord_cls = class:(?i)^(vesktop|vencord|discord)$
-$discord_ttl = title:(?i)^(vesktop|vencord|discord)$
-
-windowrulev2 = workspace 6 silent, $discord_ttl, $discord_cls
-
+	center = yes
+	size = (monitor_w*0.75) (monitor_h*0.85)
+}
 
 # ----------------------------- Telegram ----------------------------- #
 
-$telegram_cls = class:(?i)^(org.telegram.desktop|telegram-desktop|com.ayugram.desktop|ayugram-desktop|ayugram)$
+$telegram_cls = (?i)^(org.telegram.desktop|telegram-desktop|telegram|com.ayugram.desktop|ayugram-desktop|ayugram)$
 
-windowrulev2 = noinitialfocus, $telegram_cls
-windowrulev2 = workspace 6 silent, $telegram_cls
 
-windowrulev2 = float, $telegram_cls, title:(?i)^(media viewer|просмотр медиа|choose|выбрать).*$
-windowrulev2 = size 99% 98%, $telegram_cls, title:(?i)^(media viewer|просмотр медиа)$
-windowrulev2 = float, $telegram_cls, title:(?i)^.*(save|сохранить).*$
+windowrule {
+	name = telegram
+	match:class = $telegram_cls
 
-windowrulev2 = size 70% 80%, $telegram_cls, title:(?i)^)save.*$
+	no_initial_focus = yes
+	workspace = 6 silent
+}
+
+windowrule {
+	name = telegram-viewer
+	match:class = $telegram_cls
+	match:title = (?i)^.*(media viewer|просмотр медиа).*$
+
+	float = yes
+	size = (monitor_w*0.98) (monitor_h*0.96)
+	move = (monitor_w*0.01) (monitor_h*0.03)
+}
+
+# ------------------------------- Ark -------------------------------- #
+
+windowrule {
+	name = ark
+	match:class = (?i)^(org.kde.ark)$
+	match:title = (?i)^.*(password).*$
+
+	move = (monitor_w*0.5) (monitor_h*0.25)
+}
+
+# ----------------------------- Obsidian ----------------------------- #
+
+windowrule {
+	name = obsidian
+	match:class = (?i)^(obsidian)$
+
+	border_size = 0
+}
+
+# ------------------------------ Swappy ------------------------------ #
+
+$swappy= (?i)^(swappy)$
+
+windowrule {
+	name = swappy
+	match:class = $swappy
+	match:title = $swappy
+
+	no_anim = yes
+	float = yes
+	center = yes
+	opacity = 1
+}
+
+# ---------------------------- Gsimplecal ---------------------------- #
+
+$gsimplecal_cls = ^(gsimplecal)$
+$gsimplecal_ttl = ^(gsimplecal)$
+
+windowrule {
+	name = gsimplecal
+	match:class = $gsimplecal_cls
+	match:title = $gsimplecal_ttl
+
+	pin = yes
+	float = yes
+	move = (monitor_w-275) (monitor_h*0.040)
+}
+
+# ---------------------------- Calculator ---------------------------- #
+
+$calc_cls = (?i)^(deepin-calculator)$
+
+windowrule {
+	name = calculator
+	match:class = $calc_cls
+
+	move = (monitor_w*0.75) (monitor_h*0.30)
+}
+
+# --------------------------- Pavucontrol ---------------------------- #
+
+$pavucontrol_cls = (?i)^(org.pulseaudio.pavucontrol|pavucontrol)
+
+windowrule {
+	name = pavucontrol
+	match:class = $pavucontrol_cls
+
+	float = yes
+	center = yes
+	pin = yes
+	size = (monitor_w*0.5) (monitor_h*0.6)
+}
+
+# ------------------------------ Loupe ------------------------------- #
+
+$loupe_cls = ^.*(org.gnome.Loupe|loupe).*$
+
+windowrule {
+	name = loupe
+	match:class = $loupe_cls
+
+	float = yes
+	fullscreen_state = 1
+}
+
+# ----------------------------- Discord ------------------------------ #
+
+$discord = (?i)^(vesktop|vencord|discord)$
+
+windowrule {
+	name = discord
+	match:class = $discord
+	match:title = $discord
+
+	no_initial_focus = yes
+	workspace = 6 silent
+}
 
 # ------------------------------ Thunar ------------------------------ #
 
-windowrulev2 = float, class:(?i)^(thunar)$, title:(?i)^.*(rename).*$
-windowrulev2 = size 35% 20%, class:(?i)^(thunar)$, title:(?i)^.*(rename).*$
-windowrulev2 = center, class:(?i)^(thunar)$, title:(?i)^.*(rename).*$
+$thunar_cls = (?i)^(thunar)$
 
+windowrule {
+	name = thunar-rename
+	match:class = $thunar_cls
+	match:title = (?i)^.*(rename).*$
+
+	float = yes
+	center = yes
+	size = (monitor_w*0.35) (monitor_h*0.2)
+}
 
 # --------------------------- qBittorrent ---------------------------- #
 
-$qtorrent_cls = class:(?i)^(org.qbittorrent.qbittorrent|qbittorrent)$ 
+$qtorrent_cls = (?i)^(org.qbittorrent.qbittorrent|qbittorrent)$ 
 
-windowrulev2 = float, $qtorrent_cls, title:(?i)^..*$
-windowrulev2 = tile, $qtorrent_cls, title:(?i)^(qbittorrent.*)$
+windowrule {
+	name = qbittorrent
+	match:class = $qtorrent_cls
+	match:title = (?i)^..*$
 
+	float = yes
+}
 
 # -------------------------- mission-center -------------------------- #
 
-$taskmgr_cls = class:(?i)^(io.missioncenter.MissionCenter)$
+$taskmgr_cls = ^(io.missioncenter.MissionCenter)$
 
-windowrulev2 = float, $taskmgr_cls, title:(?i)^..*$
-windowrulev2 = size 60% 60%, $taskmgr_cls, title:(?i)^..*$
+windowrule {
+	name = mission-center
+	match:class = $taskmgr_cls
+	match:title = (?i)^..*$
 
+	float = yes
+	center = yes
+	size = (monitor_w*0.6) (monitor_h*0.6)
+}
 
 # ---------------------------- Workspaces ---------------------------- #
 
@@ -163,6 +297,7 @@ workspace = 12, monitor:$M2, default:true
 workspace = 13, monitor:$M2, default:true
 workspace = 14, monitor:$M2, default:true
 workspace = 15, monitor:$M2, default:true
+
 workspace = 16, monitor:$M2, default:true
 workspace = 17, monitor:$M2, default:true
 workspace = 18, monitor:$M2, default:true
